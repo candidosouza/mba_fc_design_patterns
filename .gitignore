@@ -1,0 +1,19 @@
+.history/
+.devcontainer/
+.vscode/
+*.pyc
+.docker/zsh/history/.zsh_history
+elasticsearch_data/
+__pypackages__
+__pycache__
+.pytest_cache
+.scannerwork
+.tox
+.coverage
+coverage.xml
+__coverage
+tmp/
+elasticsearch_data/
+# .docker/.grafana/config/
+.docker/.grafana/grafana_data/
+db.sqlite3
