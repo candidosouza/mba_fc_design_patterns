@@ -91,6 +91,12 @@ requires_python = ">=3.6"
 summary = "plugin and hook calling mechanisms for python"
 
 [[package]]
+name = "psycopg2"
+version = "2.9.6"
+requires_python = ">=3.6"
+summary = "psycopg2 - Python-PostgreSQL Database Adapter"
+
+[[package]]
 name = "pycodestyle"
 version = "2.10.0"
 requires_python = ">=3.6"
@@ -149,7 +155,7 @@ summary = "Module for decorators, wrappers and monkey patching."
 lock_version = "4.2"
 cross_platform = true
 groups = ["default", "dev"]
-content_hash = "sha256:b8bcd0180fc7bc1bd07738030c23c1210e9cc4f6484c0ae5f3f1502f352459d8"
+content_hash = "sha256:79f09cbed6862812303aca1eb1f94943ec1a2f6789b23ce623cbf2faf6b3638e"
 
 [metadata.files]
 "astroid 2.15.5" = [
@@ -282,6 +288,21 @@ content_hash = "sha256:b8bcd0180fc7bc1bd07738030c23c1210e9cc4f6484c0ae5f3f1502f3
 "pluggy 1.0.0" = [
     {url = "https://files.pythonhosted.org/packages/9e/01/f38e2ff29715251cf25532b9082a1589ab7e4f571ced434f98d0139336dc/pluggy-1.0.0-py2.py3-none-any.whl", hash = "sha256:74134bbf457f031a36d68416e1509f34bd5ccc019f0bcc952c7b909d06b37bd3"},
     {url = "https://files.pythonhosted.org/packages/a1/16/db2d7de3474b6e37cbb9c008965ee63835bba517e22cdb8c35b5116b5ce1/pluggy-1.0.0.tar.gz", hash = "sha256:4224373bacce55f955a878bf9cfa763c1e360858e330072059e10bad68531159"},
+]
+"psycopg2 2.9.6" = [
+    {url = "https://files.pythonhosted.org/packages/2f/e0/f0db22e36faf2b62557ed11e942cc47f3b96d52b686fa838a3ca6b3c90b3/psycopg2-2.9.6-cp38-cp38-win32.whl", hash = "sha256:2362ee4d07ac85ff0ad93e22c693d0f37ff63e28f0615a16b6635a645f4b9214"},
+    {url = "https://files.pythonhosted.org/packages/49/8e/52252e78c8fd2cc91dae13d2686b103237900fd05f80adc1efc366b40f65/psycopg2-2.9.6-cp39-cp39-win_amd64.whl", hash = "sha256:ded2faa2e6dfb430af7713d87ab4abbfc764d8d7fb73eafe96a24155f906ebf5"},
+    {url = "https://files.pythonhosted.org/packages/4b/6a/450b97eb81f64f4788a6c5c4282ef2f73b023cc1ceab906ca63cab864440/psycopg2-2.9.6-cp311-cp311-win32.whl", hash = "sha256:53f4ad0a3988f983e9b49a5d9765d663bbe84f508ed655affdb810af9d0972ad"},
+    {url = "https://files.pythonhosted.org/packages/4b/8e/69c0ea73e96afc1efb9f459050a14391fae20db81ff1815bf27c8ddc3160/psycopg2-2.9.6-cp38-cp38-win_amd64.whl", hash = "sha256:d24ead3716a7d093b90b27b3d73459fe8cd90fd7065cf43b3c40966221d8c394"},
+    {url = "https://files.pythonhosted.org/packages/9b/e1/04d7d48986b123775840fb64bc07642fe186079564744ed9955162891b24/psycopg2-2.9.6-cp310-cp310-win32.whl", hash = "sha256:f7a7a5ee78ba7dc74265ba69e010ae89dae635eea0e97b055fb641a01a31d2b1"},
+    {url = "https://files.pythonhosted.org/packages/ad/8d/88ab18931ee8d7434163671dbc6bbfd8c07ff8777fe6d156fabcb3672927/psycopg2-2.9.6-cp37-cp37m-win32.whl", hash = "sha256:869776630c04f335d4124f120b7fb377fe44b0a7645ab3c34b4ba42516951889"},
+    {url = "https://files.pythonhosted.org/packages/af/c4/5726cddb53fe52f0e839eb3da04322364f14493217ebd5818cc5e4c948a5/psycopg2-2.9.6.tar.gz", hash = "sha256:f15158418fd826831b28585e2ab48ed8df2d0d98f502a2b4fe619e7d5ca29011"},
+    {url = "https://files.pythonhosted.org/packages/c2/47/d142314e126c0ea7c8f4c0043cad069e359ce04975fd7d296c4af7f5a5c4/psycopg2-2.9.6-cp36-cp36m-win32.whl", hash = "sha256:11aca705ec888e4f4cea97289a0bf0f22a067a32614f6ef64fcf7b8bfbc53744"},
+    {url = "https://files.pythonhosted.org/packages/c9/37/f49a95fb00ca9f4678475284e60cb341aea84201ac45faa9f32ad88c02e8/psycopg2-2.9.6-cp311-cp311-win_amd64.whl", hash = "sha256:b81fcb9ecfc584f661b71c889edeae70bae30d3ef74fa0ca388ecda50b1222b7"},
+    {url = "https://files.pythonhosted.org/packages/ca/4a/b2f2cc9a3384b438961f9953fd82a20514c60a87f378f4a475f1b9de184b/psycopg2-2.9.6-cp310-cp310-win_amd64.whl", hash = "sha256:f75001a1cbbe523e00b0ef896a5a1ada2da93ccd752b7636db5a99bc57c44494"},
+    {url = "https://files.pythonhosted.org/packages/e1/56/6558cc5b4380dc2ef0ea6c96eeb6fcb26111081ec07f0dade2c3b9bc1f06/psycopg2-2.9.6-cp36-cp36m-win_amd64.whl", hash = "sha256:36c941a767341d11549c0fbdbb2bf5be2eda4caf87f65dfcd7d146828bd27f39"},
+    {url = "https://files.pythonhosted.org/packages/e2/38/4a2cc3f697f40f09617697a795c73697eec464009f4c5e47cf4050f45b63/psycopg2-2.9.6-cp37-cp37m-win_amd64.whl", hash = "sha256:a8ad4a47f42aa6aec8d061fdae21eaed8d864d4bb0f0cade5ad32ca16fcd6258"},
+    {url = "https://files.pythonhosted.org/packages/e3/76/08d3297720f2d0636a934aa30bf3343e6c4b869c12ba6294b8c1739af76b/psycopg2-2.9.6-cp39-cp39-win32.whl", hash = "sha256:1861a53a6a0fd248e42ea37c957d36950da00266378746588eab4f4b5649e95f"},
 ]
 "pycodestyle 2.10.0" = [
     {url = "https://files.pythonhosted.org/packages/06/6b/5ca0d12ef7dcf7d20dfa35287d02297f3e0f9e515da5183654c03a9636ce/pycodestyle-2.10.0.tar.gz", hash = "sha256:347187bdb476329d98f695c213d7295a846d1152ff4fe9bacb8a9590b8ee7053"},

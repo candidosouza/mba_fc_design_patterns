@@ -6,12 +6,12 @@ description = ""
 authors = [
     {name = "candidosouza", email = "candidosouzza@gmail.com"},
 ]
-dependencies = []
+dependencies = [
+    "psycopg2>=2.9.6",
+]
 requires-python = ">=3.11"
 readme = "README.md"
 license = {text = "n"}
-[project.optional-dependencies]
-
 [tool.pdm]
 [tool.pdm.dev-dependencies]
 dev = [
