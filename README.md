@@ -6,6 +6,7 @@
 > ## Metodologias e Designs
 
 * DDD
+* SOLID
 * Code Review
 * PR Request Template
 * Conventional Commits
@@ -16,6 +17,5 @@
 * Pylint
 * pytest
 * pytest-cov
-
-
-
+* psycopg2
+* python-dateutil
