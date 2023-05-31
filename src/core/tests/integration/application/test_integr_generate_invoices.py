@@ -1,11 +1,13 @@
 import unittest
 
 from core.invoice.application.use_cases import GenerateInvoices
+from core.invoice.infra.repository.contract_database_repository import ContractDatabaseRepository
 
 class TestGeneratorInvocesIntegr(unittest.TestCase):
 
     def setUp(self):
-        self.generate_invoices = GenerateInvoices()
+        self.contract_repository = ContractDatabaseRepository()
+        self.generate_invoices = GenerateInvoices(self.contract_repository) # pylint: disable=abstract-class-instantiated
 
     def test_should_generate_of_invoices_based_on_cash_basis_accounting(self):
         input_parans = {
@@ -14,12 +16,8 @@ class TestGeneratorInvocesIntegr(unittest.TestCase):
             'type': "cash"
         }
         output = self.generate_invoices.execute(input_parans)
-        print('\n')
-        print('###############################')
-        print(output)
-        print('\n')
-        # self.assertEqual(output[0].date, '05/01/2022')
-        # self.assertEqual(output[0].amout, 6000)
+        self.assertEqual(output[0].date, '05/01/2022')
+        self.assertEqual(output[0].amout, 6000)
 
     def test_should_generate_of_invoices_based_on_accrual_basis_accounting(self):
         input_parans = {
