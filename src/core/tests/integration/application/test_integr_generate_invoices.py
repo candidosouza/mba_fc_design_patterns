@@ -1,13 +1,16 @@
 import unittest
 
 from core.invoice.application.use_cases import GenerateInvoices
+from core.invoice.infra.repository.contract_in_memory_repository import ContractInMemoryRepository
 from core.invoice.infra.repository.contract_database_repository import ContractDatabaseRepository
 
 class TestGeneratorInvocesIntegr(unittest.TestCase):
 
     def setUp(self):
-        self.contract_repository = ContractDatabaseRepository()
+        self.contract_repository = ContractInMemoryRepository()
         self.generate_invoices = GenerateInvoices(self.contract_repository) # pylint: disable=abstract-class-instantiated
+        # self.contract_repository = ContractDatabaseRepository()
+        # self.generate_invoices = GenerateInvoices(self.contract_repository) # pylint: disable=abstract-class-instantiated
 
     def test_should_generate_of_invoices_based_on_cash_basis_accounting(self):
         input_parans = {
