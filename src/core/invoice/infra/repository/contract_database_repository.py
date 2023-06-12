@@ -30,6 +30,22 @@ class ContractDatabaseRepository(ContractRepository):
                 cursor.close()
                 connection.close()
 
+    def create(self, items):
+        connection = None
+        try:
+            connection = psycopg2.connect(**self.db_config)
+            cursor = connection.cursor()
+            cursor.execute(f"INSERT INTO contract VALUES ('{items['id_contract']}', '{items['description']}', {items['periods']}, {items['amount']}, '{items['date']}')")
+            connection.commit()
+            cursor.execute(f"INSERT INTO payment VALUES ('{items['id_payment']}', '{items['id_contract']}', {items['amount']}, '{items['date']}')")
+            connection.commit()
+        except (Exception, psycopg2.Error) as error:
+            print("Erro ao executar a consulta:", error)
+        finally:
+            if connection:
+                cursor.close()
+                connection.close()
+
 
 contract = ContractDatabaseRepository()
 contracts_results, payment_results = contract.list()
