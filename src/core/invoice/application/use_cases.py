@@ -44,10 +44,3 @@ class GenerateInvoices():
     @dataclass(slots=True, frozen=True)
     class Output(InvoicesOutput):
         pass
-
-input_parans = {
-    'month': 1,
-    'year': 2022,
-    'type': "cash"
-}
-# GenerateInvoices().execute(input_parans)
