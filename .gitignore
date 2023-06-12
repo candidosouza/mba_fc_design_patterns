@@ -1,6 +1,4 @@
 .history/
-.devcontainer/
-.vscode/
 .docker/pgdata/
 *.pyc
 .docker/zsh/history/.zsh_history
