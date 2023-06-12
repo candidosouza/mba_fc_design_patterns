@@ -1,6 +1,8 @@
+import datetime
+import uuid
 from abc import ABC
 from dataclasses import dataclass, field
-import datetime
+
 from typing import List
 
 from core.invoice.application.repository.contract_repository import ContractRepository
@@ -11,9 +13,11 @@ class ContractInMemoryRepository(ContractRepository, ABC):
     items: List = field(default_factory=list)
 
     def list(self) -> List:
+        id_contract = str(uuid.uuid4())
+        id_payment = str(uuid.uuid4())
         contracts_results = [
             (
-                '4224a279-c162-4283-86f5-1095f559b08c',
+                id_contract,
                 'Prestação de serviços escolares',
                 6000,
                 12,
@@ -22,14 +26,16 @@ class ContractInMemoryRepository(ContractRepository, ABC):
         ]
         payment_results = [
             (
-                'c931d9db-c8d8-44d4-8861-b3d6b734c64e',
-                '4224a279-c162-4283-86f5-1095f559b08c',
+                id_contract,
+                id_payment,
                 6000,
                 datetime.datetime(2022, 1, 5, 10, 0)
             )
         ]
 
         return contracts_results, payment_results
+        # return self.items
 
     def create(self, items):
         self.items.append(items)
+
