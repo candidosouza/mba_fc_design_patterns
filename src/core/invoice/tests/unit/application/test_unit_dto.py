@@ -11,8 +11,8 @@ class TestInvoicesOutput(unittest.TestCase):
         self.assertTrue(InvoicesOutput.__dataclass_params__)
 
     def test_fields(self):
-        self.assertEqual(InvoicesOutput.__slots__, ('date', 'amout'))
+        self.assertEqual(InvoicesOutput.__slots__, ('date', 'amount'))
         self.assertEqual(InvoicesOutput.__annotations__, {
             'date': str,
-            'amout': int
+            'amount': int
         })

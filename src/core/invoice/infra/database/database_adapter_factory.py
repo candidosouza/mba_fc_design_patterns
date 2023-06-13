@@ -29,20 +29,3 @@ class ConcreteDatabaseAdapterFactory(DatabaseAdapterFactory):
             return PostgresAdapter(postgres_config)
         elif db_config['db_type'] != "mysql":
             raise ValueError(f"Tipo de banco de dados não suportado: {db_config['db_type']}")
-
-
-adapter_factory = ConcreteDatabaseAdapterFactory()
-
-db_config = {
-    'db_type': 'postgresql',
-    'host': 'db',
-    'port': '5432',
-    'database': 'invoice',
-    'user': 'postgres',
-    'password': 'root'
-}
-postgres_adapter = adapter_factory.create_adapter(**db_config)
-postgres_adapter.connect()
-contracts_results = postgres_adapter.query("SELECT * FROM contract")
-print(contracts_results)
-postgres_adapter.close()
