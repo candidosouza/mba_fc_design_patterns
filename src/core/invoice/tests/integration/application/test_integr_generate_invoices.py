@@ -1,8 +1,6 @@
-import datetime
 import unittest
 
 from core.invoice.application.use_cases import GenerateInvoices
-from core.invoice.domain.contract import Contract
 from core.invoice.infra.database.database_adapter_factory import ConcreteDatabaseAdapterFactory
 from core.invoice.infra.repository.contract_in_memory_repository import ContractInMemoryRepository
 from core.invoice.infra.repository.contract_database_repository import ContractDatabaseRepository
