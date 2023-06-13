@@ -1,6 +1,4 @@
-import psycopg2
 from dataclasses import dataclass
-from dateutil.relativedelta import relativedelta
 
 from core.invoice.application.dto import InvoicesOutput
 from core.invoice.application.repository.contract_repository import ContractRepository
@@ -15,25 +13,18 @@ class GenerateInvoices():
         contracts_results = self.contracts_repository.list()
         output: InvoicesOutput = []
         for contract in contracts_results:
-            if input_params['type'] == 'cash':
-                for payment in contract.payments:
-                    if payment.date.month + 1 != input_params['month'] or payment.date.year != input_params['year']:
-                        output.append(GenerateInvoices.Output(
-                            date=payment.date.strftime("%d/%m/%Y"),
-                            amout=payment.amount
-                        ))
-            if input_params['type'] == 'accrual':
-                period = 0
-                while period <= contract.periods:
-                    period+=1
-                    date = contract.date + relativedelta(months=period)
-                    if date.month + 1 != input_params['month'] or date.year != input_params['year']:
-                        amount = contract.amount / contract.periods
-                        output.append(GenerateInvoices.Output(
-                            date=date.strftime("%d/%m/%Y"),
-                            amout=amount
-                        ))
-            return output
+            invoices = contract.generate_invoices(
+                input_params['month'], 
+                input_params['year'], 
+                input_params['type']
+                )
+            for invoice in invoices:
+                output.append(GenerateInvoices.Output(
+                    date=invoice.date,
+                    amount=invoice.amount
+                ))
+            
+        return output
 
     @dataclass(slots=True, frozen=True)
     class Input:
