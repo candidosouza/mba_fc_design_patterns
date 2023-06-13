@@ -44,3 +44,7 @@ Livros
 GoF
 Head First - Design Patterns
 Patterns of Enterprise Application Architecture
+
+
+
+https://refactoring.guru/design-patterns

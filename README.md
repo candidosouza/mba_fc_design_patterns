@@ -11,6 +11,10 @@
 * PR Request Template
 * Conventional Commits
 
+
+> ## Design Patterns
+* Adapter
+
 > ## Bibliotecas e Ferramentas
 
 * Autopep8
