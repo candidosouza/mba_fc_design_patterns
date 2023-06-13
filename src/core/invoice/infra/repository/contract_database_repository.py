@@ -25,7 +25,7 @@ class ContractDatabaseRepository(ContractRepository):
                 )
                 payments_data =  self.connection.query(f"SELECT * FROM payment WHERE id_contract = '{str(contract.id_contract)}'")
                 for payment_data in payments_data:
-                    contract.payments.append(
+                    contract.add_payment(
                         Payment(
                             id_payment=payment_data[0],
                             id_contract=payment_data[1],
