@@ -58,3 +58,13 @@ class TestGeneratorInvocesIntegr(unittest.TestCase):
         output = self.generate_invoices.execute(input_parans)
         self.assertEqual(output[0].date, '01/02/2022')
         self.assertEqual(output[0].amount, 500)
+    
+    def test_should_generate_of_invoices_based_on_accrual_basis_accounting_by_csv(self):
+        input_parans = {
+            'month': 1,
+            'year': 2022,
+            'type': "accrual",
+            'format': 'csv'
+        }
+        output = self.generate_invoices.execute(input_parans)
+        self.assertEqual(output[0], '01/02/2022;500')
