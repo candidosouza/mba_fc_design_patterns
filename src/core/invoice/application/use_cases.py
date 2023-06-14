@@ -1,4 +1,5 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from typing import Optional
 
 from core.invoice.application.dto import InvoicesOutput
 from core.invoice.application.repository.contract_repository import ContractRepository
@@ -23,14 +24,20 @@ class GenerateInvoices():
                     date=invoice.date,
                     amount=invoice.amount
                 ))
-            
-        return output
+
+        if 'format' not in input_params or input_params['format'] == 'json':
+            return output
+        if input_params['format'] == 'csv':
+            line: str = [f'{invoice.date};{invoice.amount}' for invoice in output]
+            return line
+        raise Exception('Invalid format')
 
     @dataclass(slots=True, frozen=True)
     class Input:
         month: int
         year: int
         type: str
+        format: Optional[str]
 
     @dataclass(slots=True, frozen=True)
     class Output(InvoicesOutput):
