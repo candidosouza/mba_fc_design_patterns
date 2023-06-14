@@ -25,6 +25,12 @@ class Contract(Entity):
     def get_payments(self) -> List[Payment]:
         return self.payments
     
+    def get_balance(self) -> float:
+        balance = self.amount
+        for payment in self.payments:
+            balance -= payment.amount
+        return balance
+    
     def generate_invoices(self, mouth: int, year: int, type: str) -> List[Any]:
         invoice_generation_strategy = InvoiceGenerationFactory.create(type)
         return invoice_generation_strategy.generate(self, mouth, year)
