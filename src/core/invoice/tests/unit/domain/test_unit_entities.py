@@ -1,7 +1,6 @@
 import datetime
 import unittest
-from dataclasses import FrozenInstanceError, is_dataclass
-
+from dataclasses import is_dataclass
 from core.invoice.domain.contract import Contract
 from core.invoice.domain.payment import Payment
 from core.invoice.domain.invoice import Invoice
@@ -27,6 +26,19 @@ class TestContractUnit(unittest.TestCase):
         self.assertEqual(contract.periods, data["periods"])
         self.assertEqual(contract.date, data["date"])
         self.assertEqual(contract.payments, data["payments"])
+
+    def test_should_generate_invoices_from_a_contract(self):
+        input_parans = {
+            "id_contract": "123",
+            "description": "Test",
+            "amount": 6000,
+            "periods": 12,
+            "date": datetime.datetime.strptime("2022-01-01", '%Y-%m-%d').date()
+        }
+        contract = Contract(**input_parans)
+        invoices = contract.generate_invoices(1, 2022, 'accrual')
+        self.assertEqual(invoices[0].date, '01/02/2022')
+        self.assertEqual(invoices[0].amount, 500)
 
 
 class TestPaymentUnit(unittest.TestCase):
@@ -61,16 +73,3 @@ class TestInvoiceUnit(unittest.TestCase):
         invoice = Invoice(**data)
         self.assertEqual(invoice.amount, data["amount"])
         self.assertEqual(invoice.date, data["date"])
-
-    def test_should_generate_invoices_from_a_contract(self):
-        input_parans = {
-            "id_contract": "123",
-            "description": "Test",
-            "amount": 6000,
-            "periods": 12,
-            "date": datetime.datetime.strptime("2022-01-01", '%Y-%m-%d').date()
-        }
-        contract = Contract(**input_parans)
-        invoices = contract.generate_invoices(1, 2022, 'accrual')
-        self.assertEqual(invoices[0].date, '01/02/2022')
-        self.assertEqual(invoices[0].amount, 500)
