@@ -1,3 +1,4 @@
+from typing import List
 import psycopg2
 from dataclasses import dataclass
 from core.invoice.application.repository.contract_repository import ContractRepository
@@ -11,7 +12,7 @@ from core.invoice.infra.database.database_adapter_factory import ConcreteDatabas
 class ContractDatabaseRepository(ContractRepository):
     connection: DatabaseAdapter
 
-    def list(self):
+    def list(self) -> List[Contract]:
         try:
             contracts: Contract = []
             contracts_data = self.connection.query("SELECT * FROM contract")
