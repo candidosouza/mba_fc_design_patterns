@@ -23,3 +23,6 @@
 * pytest-cov
 * psycopg2
 * python-dateutil
+
+
+> ## Projeto em andamento...
