@@ -2,13 +2,16 @@ from dataclasses import dataclass, field
 from typing import Optional
 
 from core.invoice.application.dto import InvoicesOutput
+from core.invoice.application.presenter.presenter import Presenter
 from core.invoice.application.repository.contract_repository import ContractRepository
+from core.invoice.infra.presenter.presenter import CSVPresenter, JsonPresenter
 
 
 @dataclass(slots=True, frozen=True)
 class GenerateInvoices():
 
     contracts_repository: ContractRepository
+    presenter: Presenter = field(default_factory=lambda : JsonPresenter())
 
     def execute(self, input_params: 'Input') -> 'Output':
         contracts_results = self.contracts_repository.list()
@@ -25,12 +28,8 @@ class GenerateInvoices():
                     amount=invoice.amount
                 ))
 
-        if 'format' not in input_params or input_params['format'] == 'json':
-            return output
-        if input_params['format'] == 'csv':
-            line: str = [f'{invoice.date};{invoice.amount}' for invoice in output]
-            return line
-        raise Exception('Invalid format')
+        return self.presenter.present(output)
+        
 
     @dataclass(slots=True, frozen=True)
     class Input:

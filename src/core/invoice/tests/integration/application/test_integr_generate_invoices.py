@@ -2,6 +2,7 @@ import unittest
 
 from core.invoice.application.use_cases import GenerateInvoices
 from core.invoice.infra.database.database_adapter_factory import ConcreteDatabaseAdapterFactory
+from core.invoice.infra.presenter.presenter import CSVPresenter
 from core.invoice.infra.repository.contract_in_memory_repository import ContractInMemoryRepository
 from core.invoice.infra.repository.contract_database_repository import ContractDatabaseRepository
 
@@ -66,5 +67,7 @@ class TestGeneratorInvocesIntegr(unittest.TestCase):
             'type': "accrual",
             'format': 'csv'
         }
-        output = self.generate_invoices.execute(input_parans)
+        presenter = CSVPresenter()
+        generate_invoices = GenerateInvoices(self.contract_repository, presenter) # pylint: disable=abstract-class-instantiated
+        output = generate_invoices.execute(input_parans)
         self.assertEqual(output[0], '01/02/2022;500')
