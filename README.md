@@ -23,6 +23,13 @@
 * pytest-cov
 * psycopg2
 * python-dateutil
+* Flask
 
 
-> ## Projeto em andamento...
+> ## Projeto em desenvolvimento...
+
+run flask
+
+```bash
+python ./src/core/app.py
+```
