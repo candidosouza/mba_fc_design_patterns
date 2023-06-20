@@ -1,14 +1,15 @@
 from dataclasses import dataclass, field
 from typing import Optional
 
-from core.invoice.application.dto import InvoicesOutput
+from core.invoice.application.usecase.dto import InvoicesOutput
 from core.invoice.application.presenter.presenter import Presenter
 from core.invoice.application.repository.contract_repository import ContractRepository
+from core.invoice.application.usecase.use_case import UseCase
 from core.invoice.infra.presenter.presenter import CSVPresenter, JsonPresenter
 
 
 @dataclass(slots=True, frozen=True)
-class GenerateInvoices():
+class GenerateInvoices(UseCase):
 
     contracts_repository: ContractRepository
     presenter: Presenter = field(default_factory=lambda : JsonPresenter())

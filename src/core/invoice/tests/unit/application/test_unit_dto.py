@@ -1,6 +1,6 @@
 import unittest
 from dataclasses import is_dataclass
-from core.invoice.application.dto import InvoicesOutput
+from core.invoice.application.usecase.dto import InvoicesOutput
 
 
 class TestInvoicesOutput(unittest.TestCase):

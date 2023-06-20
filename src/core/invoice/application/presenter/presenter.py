@@ -1,6 +1,6 @@
 from abc import ABC
 from typing import List
-from core.invoice.application.dto import InvoicesOutput as Output
+from core.invoice.application.usecase.dto import InvoicesOutput as Output
 
 class Presenter(ABC):
 
