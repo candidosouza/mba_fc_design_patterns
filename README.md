@@ -1,6 +1,6 @@
-# MBA - Arquitetura Full Cycle - Colaboradores FC
+# MBA - Arquitetura Full Cycle - Design Patterns
 
-> ## SOLID e Design Patterns com python
+## SOLID e Design Patterns com python
 
 
 > ## Metodologias e Designs
