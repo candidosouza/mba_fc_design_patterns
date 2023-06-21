@@ -13,7 +13,11 @@
 
 
 > ## Design Patterns
+* DTO
+* Repository
 * Adapter
+* Presenter
+* Factory
 
 > ## Bibliotecas e Ferramentas
 
@@ -26,7 +30,7 @@
 * Flask
 
 
-> ## Projeto em desenvolvimento...
+> ## Estudo/Projeto em desenvolvimento...
 
 run flask
 
