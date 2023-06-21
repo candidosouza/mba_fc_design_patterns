@@ -1,10 +1,9 @@
 from dataclasses import dataclass, field
 from typing import Optional
 
-from core.invoice.application.usecase.dto import EmailOutput, InvoicesOutput
+from core.invoice.application.usecase.dto import InvoicesOutput
 from core.invoice.application.presenter.presenter import Presenter
 from core.invoice.application.repository.contract_repository import ContractRepository
-from core.invoice.application.usecase.email_sender import EmailLogger, EmailSender
 from core.invoice.application.usecase.use_case import UseCase
 from core.invoice.infra.mediator.mediator import Mediator
 from core.invoice.infra.presenter.presenter import CSVPresenter, JsonPresenter
@@ -32,16 +31,6 @@ class GenerateInvoices(UseCase):
                     amount=invoice.amount
                 ))
         self.mediator.publish(event='invoices_generated', data=output)
-        email_logger = EmailLogger(self.mediator)
-        email_sender = EmailSender(self.mediator)
-        email_data = EmailOutput(
-            sender="sender@example.com",
-            recipient="recipient@example.com",
-            subject="Hello",
-            message="Hi, how are you?"
-        )
-        email_logger.handle_email_sent(email_data)
-        email_sender.send(email_data)
         return self.presenter.present(output)
         
 

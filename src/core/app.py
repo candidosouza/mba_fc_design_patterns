@@ -27,6 +27,16 @@ def generate_invoices():
     contract_repository = ContractDatabaseRepository(postgres_adapter)
     mediator = ConcreteMediator()
     mediator.subscribe('invoices_generated', lambda data: print(data))
+    email_logger = EmailLogger(mediator)
+    email_sender = EmailSender(mediator)
+    email_data = EmailOutput(
+        sender="sender@example.com",
+        recipient="recipient@example.com",
+        subject="Hello",
+        message="Hi, how are you?"
+    )
+    email_logger.handle_email_sent(email_data)
+    email_sender.send(email_data)
     generate_invoices = LoggerDecorator(GenerateInvoices(contract_repository))
     output = generate_invoices.execute(request.args)
     if request.method == 'POST':
