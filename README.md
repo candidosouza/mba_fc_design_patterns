@@ -18,6 +18,7 @@
 * Adapter
 * Presenter
 * Factory
+* Mediator
 
 > ## Bibliotecas e Ferramentas
 
