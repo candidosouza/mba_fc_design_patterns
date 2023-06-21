@@ -1,3 +1,4 @@
+import re
 from flask import Flask
 from flask import request
 from core.invoice.application.decorator.logger_decorator import LoggerDecorator
@@ -8,7 +9,7 @@ from core.invoice.infra.repository.contract_database_repository import ContractD
 app = Flask(__name__)
 
 
-@app.route("/generate_invoices", methods=['GET', 'POST'])
+@app.route("/generate_invoices/", methods=['GET', 'POST'])
 def generate_invoices():
     db_config = {
         'db_type': 'postgresql',
@@ -23,23 +24,11 @@ def generate_invoices():
     postgres_adapter.connect()
     contract_repository = ContractDatabaseRepository(postgres_adapter)
     generate_invoices = LoggerDecorator(GenerateInvoices(contract_repository))
-    input_parans = {
-        'month': request.args.get('month'),
-        'year': request.args.get('year'),
-        'type': request.args.get('type'),
-        'user_agent': request.headers.get('User-Agent')
-    }
-    output = generate_invoices.execute(input_parans)
+    output = generate_invoices.execute(request.args)
     if request.method == 'POST':
-        input_parans = {
-            'month': request.form['month'],
-            'year': request.form['year'],
-            'type': request.form['type'],
-            'user_agent': request.headers.get('User-Agent')
-        }
-        output = generate_invoices.execute(input_parans)
+        output = generate_invoices.execute(request.form)
     return list(output)
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='0.0.0.0', port=8000, debug=True)

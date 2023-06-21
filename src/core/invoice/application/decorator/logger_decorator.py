@@ -7,7 +7,7 @@ class LoggerDecorator(UseCase):
 
     def execute(self, input_params: 'Input') -> 'Output':
         print('\n')
-        print(f"User-Agent: {input_params['user_agent']}")
+        print(f"User-Agent: xpto")
         print('\n')
         return self.use_case.execute(input_params)
 
