@@ -105,7 +105,3 @@ ou
     "type": "cash"
 }
 ```
-
-> ## Estudo/Projeto em desenvolvimento...
-
-...
