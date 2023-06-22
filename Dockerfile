@@ -1,6 +1,6 @@
 FROM python:3.11
 
-RUN apt update && apt install -y --no-install-recommends git curl wget \
+RUN apt update && apt install -y --no-install-recommends git curl wget build-essential librdkafka-dev \
     && python -m pip install --upgrade pip
 
 RUN useradd -ms /bin/bash python && \
