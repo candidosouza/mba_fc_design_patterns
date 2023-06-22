@@ -1,9 +1,10 @@
-from core.invoice.application.usecase.dto import EmailOutput
-from core.invoice.application.usecase.email_sender import EmailLogger, EmailSender
+from core.invoice.infra.kafka.kafka import KafkaConfig
 from flask import Flask
 from flask import request
 from core.invoice.application.decorator.logger_decorator import LoggerDecorator
 from core.invoice.application.usecase.generate_invoices import GenerateInvoices
+from core.invoice.application.usecase.dto import EmailOutput, MessageOutput
+from core.invoice.application.usecase.email_sender import EmailLogger, EmailSender
 from core.invoice.infra.database.database_adapter_factory import ConcreteDatabaseAdapterFactory
 from core.invoice.infra.repository.contract_database_repository import ContractDatabaseRepository
 from core.invoice.infra.mediator.concrete_mediator import ConcreteMediator
@@ -39,6 +40,13 @@ def generate_invoices():
     email_sender.send(email_data)
     generate_invoices = LoggerDecorator(GenerateInvoices(contract_repository))
     output = generate_invoices.execute(request.args)
+    kafka_config = KafkaConfig(bootstrap_servers="kafka:9092")
+    message = kafka_config.Message(
+        topic='invoices_generated',
+        content=output
+    )
+    kafka_config.send(message)
+    kafka_config.consume(['invoices_generated'], lambda data: print(data))
     if request.method == 'POST':
         output = generate_invoices.execute(request.form)
     return list(output)
