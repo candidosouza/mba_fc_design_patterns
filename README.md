@@ -22,12 +22,6 @@
 
 > ## Bibliotecas e Ferramentas
 
-* Autopep8
-* Pylint
-* pytest
-* pytest-cov
-* psycopg2
-* python-dateutil
 * Flask
 * kafka
 
