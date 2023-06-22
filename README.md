@@ -29,6 +29,7 @@
 * psycopg2
 * python-dateutil
 * Flask
+* kafka
 
 
 > ## Instalação
@@ -45,7 +46,22 @@ docker
 docker-compose up -d
 ```
 
-entrar no container
+entrar no container kafka
+```bash
+docker compose exec kafka bash
+```
+
+criar o tópico
+```bash
+kafka-topics --create --bootstrap-server=kafka:9092 --topic=invoices_generated --partitions=3
+```
+
+criar o consumer
+```bash
+kafka-console-consumer --bootstrap-server=kafka:9092 --topic=invoices_generated
+```
+
+entrar no container app
 ```bash
 docker compose exec app bash
 ```
