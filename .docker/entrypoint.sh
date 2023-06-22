@@ -1,5 +1,5 @@
 #!/bin/bash
 
 pdm install
-pdm run python migrate.py
+pdm run python src/core/invoice/infra/migrations/migrate.py
 tail -f /dev/null
