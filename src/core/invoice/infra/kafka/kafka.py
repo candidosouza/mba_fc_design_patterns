@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Optional
+from typing import Any, Optional
 from confluent_kafka import Producer, Consumer, KafkaError
 from core.invoice.application.usecase.dto import MessageOutput
 
@@ -18,10 +18,10 @@ class KafkaConfig:
             'auto.offset.reset': 'earliest'
         })
 
-    def send(self, message: str) -> None:
+    def send(self, message: 'Input') -> 'Output':
         self.producer.produce(message.topic, value=str(message.content))
-        print(f"Sent message: {message.topic} - {message.content}")
         self.producer.flush()
+        return KafkaConfig.Output(message=message)
 
     def consume(self, topics, callback) -> None:
         self.consumer.subscribe(topics)
@@ -39,6 +39,15 @@ class KafkaConfig:
 
         self.consumer.close()
 
+
     @dataclass(slots=True, frozen=True)
-    class Message(MessageOutput):
-        pass
+    class Input:
+        topic: str
+        content: Any
+
+    @dataclass(slots=True, frozen=True)
+    class Output:
+        message: Any
+
+        def __post_init__(self):
+            print(f"Sent message: {self.message.topic} - {self.message.content}")

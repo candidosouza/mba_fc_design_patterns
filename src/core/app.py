@@ -41,10 +41,11 @@ def generate_invoices():
     generate_invoices = LoggerDecorator(GenerateInvoices(contract_repository))
     output = generate_invoices.execute(request.args)
     kafka_config = KafkaConfig(bootstrap_servers="kafka:9092")
-    message = kafka_config.Message(
-        topic='invoices_generated',
-        content=output
-    )
+    imput_params = {
+        'topic': 'invoices_generated',
+        'content': output
+    }
+    message = kafka_config.Input(**imput_params)
     kafka_config.send(message)
     kafka_config.consume(['invoices_generated'], lambda data: print(data))
     if request.method == 'POST':
