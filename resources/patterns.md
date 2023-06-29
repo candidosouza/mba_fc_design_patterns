@@ -14,14 +14,13 @@ Strategy
 
 Criar comportamento intercambiável
 
-
 Dynamic Factory
 
 Criar uma instância com base em uma string
 
 Presenter
 
-Formatar e adequar um determino conjunto de dados às necessidades do cliente
+Formatar e adequar um determinado conjunto de dados às necessidades do cliente
 
 Decorator
 
@@ -41,10 +40,8 @@ Cria um mecanismo de notificação para reduzir o acoplamento entre os objetos
 
 Livros
 
-GoF
-Head First - Design Patterns
-Patterns of Enterprise Application Architecture
+- GoF
+- Head First - Design Patterns
+- Patterns of Enterprise Application Architecture
 
-
-
-https://refactoring.guru/design-patterns
+[Refactoring Guru - Design Patterns](https://refactoring.guru/design-patterns)
