@@ -52,13 +52,13 @@ O projeto adota as seguintes metodologias e design:
 **DDD (Domain-Driven Design):** O projeto segue os princípios e conceitos do Domain-Driven Design (DDD), alinhando o design do software com as necessidades do domínio do problema. Isso promove uma melhor compreensão do negócio, modularidade e reutilização de código.
 
 
-**SOLID:**Os princípios SOLID são aplicados no design do projeto, visando a criação de código coeso, flexível e de fácil manutenção. São seguidos os princípios SRP (Single Responsibility Principle), OCP (Open-Closed Principle), LSP (Liskov Substitution Principle), ISP (Interface Segregation Principle) e DIP (Dependency Inversion Principle). Isso garante a escalabilidade e extensibilidade do sistema.
+**SOLID:** Os princípios SOLID são aplicados no design do projeto, visando a criação de código coeso, flexível e de fácil manutenção. São seguidos os princípios SRP (Single Responsibility Principle), OCP (Open-Closed Principle), LSP (Liskov Substitution Principle), ISP (Interface Segregation Principle) e DIP (Dependency Inversion Principle). Isso garante a escalabilidade e extensibilidade do sistema.
 
-**Code Review:**O projeto adota a prática de revisão de código, em que os desenvolvedores revisam e discutem o código uns dos outros. Isso contribui para a identificação de problemas, melhoria da qualidade do código e compartilhamento de conhecimento.
+**Code Review:** O projeto adota a prática de revisão de código, em que os desenvolvedores revisam e discutem o código uns dos outros. Isso contribui para a identificação de problemas, melhoria da qualidade do código e compartilhamento de conhecimento.
 
-**PR (Pull Request) Request Template:**É utilizado um template de Pull Request para facilitar o processo de revisão de código. Esse template fornece um guia para documentar as alterações realizadas, os testes efetuados e outras informações relevantes.
+**PR (Pull Request) Request Template:** É utilizado um template de Pull Request para facilitar o processo de revisão de código. Esse template fornece um guia para documentar as alterações realizadas, os testes efetuados e outras informações relevantes.
 
-**Conventional Commits:**O padrão de mensagens de commit Conventional Commits é adotado no projeto. Isso padroniza as mensagens de commit e facilita a geração de changelogs automáticos.
+**Conventional Commits:** O padrão de mensagens de commit Conventional Commits é adotado no projeto. Isso padroniza as mensagens de commit e facilita a geração de changelogs automáticos.
 
 ### Padrões de Projetos Utilizados
 
