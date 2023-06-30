@@ -204,3 +204,19 @@ Existem dois tipos principais de Gateway:
 Os Gateways são projetados para serem genéricos e reutilizáveis, permitindo que a aplicação se comunique com diferentes sistemas externos usando a mesma interface simplificada. Eles podem ser implementados como classes ou componentes separados que são responsáveis pelo acesso e comunicação com os sistemas externos, enquanto a aplicação utiliza esses Gateways para realizar suas operações sem precisar conhecer os detalhes internos da implementação dos sistemas externos.
 
 Em resumo, o padrão de projeto Gateway oferece uma abstração entre a aplicação e os sistemas externos, simplificando o acesso e fornecendo uma interface consistente. Ele ajuda a separar a lógica de negócio da complexidade do acesso aos sistemas externos, permitindo maior flexibilidade, reuso de código e testabilidade.
+
+### Row Data Gateway vs Table Data Gateway
+Row Data Gateway e Table Data Gateway são dois padrões de projeto relacionados ao acesso a dados em um sistema.
+
+**Row Data Gateway:**
+O padrão Row Data Gateway (ou Gateway de Dados por Linha) é usado para encapsular o acesso a dados de uma única linha em uma tabela de banco de dados. Cada instância do Row Data Gateway representa uma única linha da tabela e é responsável por fornecer métodos para recuperar, atualizar e excluir os dados dessa linha específica. O Row Data Gateway é uma abstração que encapsula as operações de banco de dados e fornece uma interface orientada a objetos para interagir com os dados em nível de linha.
+
+**Table Data Gateway:**
+O padrão Table Data Gateway (ou Gateway de Dados por Tabela) é usado para encapsular o acesso a uma tabela inteira de um banco de dados. O Table Data Gateway é responsável por fornecer métodos para executar operações de leitura e gravação na tabela, como recuperar registros, inserir novos registros, atualizar registros existentes e excluir registros. O Table Data Gateway oferece uma interface de alto nível para interagir com os dados da tabela, abstraindo os detalhes do banco de dados subjacente.
+
+A diferença principal entre esses dois padrões está no nível de granularidade dos objetos de acesso a dados. Enquanto o Row Data Gateway lida com operações em nível de linha, o Table Data Gateway opera em nível de tabela. Isso significa que, com o Row Data Gateway, cada linha da tabela é representada por um objeto separado, enquanto o Table Data Gateway lida com a tabela como um todo.
+
+Ambos os padrões podem ser implementados de forma simples ou mais complexa, dependendo dos requisitos do sistema e do contexto em que são aplicados. Eles ajudam a encapsular a lógica de acesso a dados, proporcionando uma interface clara e coesa para interagir com as tabelas do banco de dados.
+
+**Obs importante: É importante mencionar que esses padrões são considerados mais tradicionais e têm sido substituídos por abordagens mais modernas, como o padrão Active Record ou o uso de ORMs (Object-Relational Mapping), que fornecem mapeamento automático entre objetos e tabelas do banco de dados, simplificando ainda mais o acesso e manipulação de dados.**
+
