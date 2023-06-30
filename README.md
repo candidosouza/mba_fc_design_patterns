@@ -99,3 +99,10 @@ ou
     "type": "cash"
 }
 ```
+
+> ## Docs
+
+[Padrões de projetos usados](https://github.com/candidosouza/mba_fc_design_patterns/blob/main/resources/patterns.md)
+
+
+[Padrões de projetos para aplicações Enterprises](https://github.com/candidosouza/mba_fc_design_patterns/blob/main/resources/patterns_of_Enterprise_application_architecture.md)
