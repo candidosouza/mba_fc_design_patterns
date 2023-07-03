@@ -220,3 +220,22 @@ Ambos os padrões podem ser implementados de forma simples ou mais complexa, dep
 
 **Obs importante: É importante mencionar que esses padrões são considerados mais tradicionais e têm sido substituídos por abordagens mais modernas, como o padrão Active Record ou o uso de ORMs (Object-Relational Mapping), que fornecem mapeamento automático entre objetos e tabelas do banco de dados, simplificando ainda mais o acesso e manipulação de dados.**
 
+
+## Active Record
+
+O padrão Active Record é um padrão de projeto de software que combina a lógica de negócios (modelos) com a persistência de dados em um único objeto chamado de "registro ativo" (active record). Esse padrão é comumente utilizado em frameworks e bibliotecas de mapeamento objeto-relacional (ORM), como o Ruby on Rails.
+
+No padrão Active Record, cada objeto representa uma única linha em uma tabela do banco de dados e possui métodos para acessar e manipular os dados dessa linha. O objeto active record encapsula a lógica de persistência, permitindo que você crie, leia, atualize e exclua registros no banco de dados de forma simples e direta.
+
+### Principais características do padrão Active Record:
+
+- **Mapeamento de objetos-relacionais**: O padrão Active Record fornece um mapeamento direto entre os objetos da aplicação e as tabelas do banco de dados. Cada atributo do objeto corresponde a uma coluna na tabela, e as operações de leitura/gravação são mapeadas para operações de consulta/atualização no banco de dados.
+
+- **Abstração do acesso aos dados**: O objeto active record abstrai os detalhes de acesso ao banco de dados, como a criação de consultas SQL, permitindo que você interaja com os dados usando métodos de alto nível. Isso simplifica o desenvolvimento, reduzindo a quantidade de código necessário para manipular os dados.
+
+- **Comportamento de negócio incorporado**: Além das operações básicas de CRUD (Create, Read, Update, Delete), o objeto active record também pode incorporar comportamentos de negócio específicos. Você pode adicionar métodos personalizados para executar validações, cálculos, relacionamentos entre objetos e outras regras de negócio.
+
+- **Relacionamentos entre objetos**: O padrão Active Record também suporta a definição de relacionamentos entre objetos, como associações um-para-um, um-para-muitos e muitos-para-muitos. Isso facilita a navegação e manipulação de objetos relacionados, simplificando a lógica de busca e manipulação dos dados relacionados.
+
+Embora o padrão Active Record simplifique o desenvolvimento de aplicações CRUD, ele pode apresentar algumas limitações quando se trata de separar completamente as responsabilidades de persistência de dados das entidades de negócio. Em casos mais complexos, onde a persistência de dados e a lógica de negócios são mais distintas, pode ser preferível adotar outros padrões, como o padrão Repository ou o padrão Data Mapper, para garantir uma maior separação de preocupações.
+
