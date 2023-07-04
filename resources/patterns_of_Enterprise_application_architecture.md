@@ -239,3 +239,107 @@ No padrão Active Record, cada objeto representa uma única linha em uma tabela 
 
 Embora o padrão Active Record simplifique o desenvolvimento de aplicações CRUD, ele pode apresentar algumas limitações quando se trata de separar completamente as responsabilidades de persistência de dados das entidades de negócio. Em casos mais complexos, onde a persistência de dados e a lógica de negócios são mais distintas, pode ser preferível adotar outros padrões, como o padrão Repository ou o padrão Data Mapper, para garantir uma maior separação de preocupações.
 
+
+## Padrão de Projeto Data Mapper
+
+O padrão de projeto Data Mapper é um padrão arquitetural que separa a lógica de persistência dos objetos de domínio em um sistema. Ele define uma camada de mapeamento de dados que atua como uma ponte entre o modelo de dados do banco de dados e os objetos de domínio do sistema.
+
+### Principais componentes do padrão Data Mapper:
+
+- **Objeto de Domínio**:
+  - Representa as entidades ou objetos de negócio do sistema.
+  - Não possui conhecimento sobre o banco de dados ou sobre como os dados são persistidos.
+
+- **Data Mapper**:
+  - Responsável por mapear os objetos de domínio para as estruturas de dados do banco de dados e vice-versa.
+  - Fornece métodos para persistir, recuperar, atualizar e excluir os objetos de domínio no banco de dados.
+  - Isola a lógica de persistência dos objetos de domínio, garantindo que eles sejam independentes da camada de persistência.
+
+- **Camada de Persistência**:
+  - Composta por classes e componentes responsáveis por interagir diretamente com o banco de dados.
+  - Realiza as operações de leitura/gravação dos dados no banco de dados.
+  - O Data Mapper utiliza essa camada para executar as operações de persistência.
+
+### Benefícios do padrão Data Mapper:
+
+- Separação de Responsabilidades:
+  - Isola a lógica de persistência dos objetos de domínio, evitando acoplamento e promovendo a coesão.
+
+- Independência do Banco de Dados:
+  - Os objetos de domínio não precisam conhecer os detalhes de como são persistidos no banco de dados.
+  - Permite que o sistema utilize diferentes bancos de dados sem afetar a lógica de domínio.
+
+- Flexibilidade e Manutenção:
+  - Facilita a evolução e manutenção do sistema, pois as mudanças na camada de persistência são isoladas do restante do sistema.
+
+- Testabilidade:
+  - Os objetos de domínio podem ser testados independentemente da camada de persistência, usando mocks ou stubs.
+
+O padrão Data Mapper é amplamente utilizado em sistemas que adotam abordagens de desenvolvimento baseadas em domínio (Domain-Driven Design - DDD), pois permite uma melhor separação das preocupações e um maior controle sobre a persistência dos dados. Ele promove uma arquitetura mais flexível, escalável e de fácil manutenção.
+
+
+## Padrão de Projeto Unit of Work
+
+O padrão de projeto **Unit of Work** é um padrão arquitetural que tem como objetivo gerenciar transações e coordenar as operações de persistência em um sistema. Ele encapsula várias operações relacionadas em uma única unidade de trabalho, permitindo que essas operações sejam tratadas de forma isolada e consistente.
+
+### Principais componentes do padrão Unit of Work
+
+**Unit of Work:**
+
+O *Unit of Work* é responsável por gerenciar as operações de persistência em uma transação. Ele mantém o controle sobre as entidades envolvidas na transação, gerencia a inclusão, atualização e exclusão das entidades, e coordena a sincronização das alterações no banco de dados.
+
+**Repositórios:**
+
+Os repositórios são responsáveis por fornecer métodos para recuperar, atualizar e excluir entidades específicas. Eles interagem com a camada de persistência para realizar as operações de banco de dados. Os repositórios são utilizados pelo *Unit of Work* para acessar as entidades durante a transação.
+
+**Entidades:**
+
+As entidades representam os objetos de negócio do sistema. Elas podem ser mapeadas diretamente para tabelas no banco de dados ou conter lógica adicional de domínio. As entidades são manipuladas e gerenciadas pelo *Unit of Work* durante as operações de persistência.
+
+### Benefícios do padrão Unit of Work
+
+- Gerenciamento de Transações: Permite que as operações de persistência sejam tratadas como uma única transação, garantindo a consistência dos dados no banco de dados, mesmo em cenários complexos com várias operações.
+
+- Isolamento das Operações: As operações de persistência são tratadas de forma isolada e separada das operações de negócio, facilitando a manutenção, testabilidade e reutilização do código.
+
+- Controle Fino das Alterações: O *Unit of Work* monitora as alterações nas entidades e sincroniza essas alterações no banco de dados no momento apropriado, evitando a necessidade de operações manuais de inclusão, atualização e exclusão no banco de dados.
+
+- Melhoria no Desempenho: O *Unit of Work* permite a otimização das operações de persistência, agrupando-as em uma única transação e reduzindo a quantidade de chamadas ao banco de dados, melhorando o desempenho da aplicação.
+
+## Identity Map (Mapa de Identidade)
+
+O padrão de projeto Identity Map (Mapa de Identidade) é um padrão utilizado no contexto de persistência de dados, geralmente em camadas de acesso a banco de dados. Ele tem como objetivo garantir que cada objeto seja carregado apenas uma vez na memória durante uma determinada execução do programa.
+
+O padrão Identity Map mantém um mapa interno que associa os objetos recuperados do banco de dados às suas chaves primárias. Quando um objeto é solicitado, o Identity Map verifica se ele já está na memória. Se estiver, retorna a referência para o objeto existente; caso contrário, busca o objeto no banco de dados, armazena-o no mapa e o retorna.
+
+Esse padrão traz alguns benefícios, como:
+
+- Evitar múltiplas recuperações do mesmo objeto: O Identity Map garante que um objeto seja carregado do banco de dados apenas uma vez, reduzindo assim o número de consultas desnecessárias.
+
+- Manter a consistência dos objetos: Como todos os objetos são mantidos no mapa, qualquer alteração feita em um objeto é refletida em todas as partes do sistema que possuem uma referência para o mesmo objeto.
+
+- Melhorar o desempenho: Ao evitar consultas repetidas ao banco de dados, o Identity Map pode melhorar o desempenho do sistema, reduzindo o tempo de acesso ao banco e minimizando a sobrecarga de comunicação com o banco de dados.
+
+- Facilitar o compartilhamento de objetos entre componentes: O Identity Map permite que vários componentes acessem e compartilhem os mesmos objetos, garantindo a consistência dos dados.
+
+É importante ressaltar que a implementação completa do padrão Identity Map pode envolver considerações adicionais, como gerenciamento de objetos modificados, remoção de objetos do mapa quando não são mais necessários, entre outros.
+
+
+## Lazy Loading
+O padrão de projeto **Lazy Loading**, também conhecido como *Carregamento Preguiçoso*, é uma técnica utilizada para atrasar o carregamento de recursos ou dados até o momento em que eles são realmente necessários. Isso é feito visando a otimização de desempenho e eficiência, evitando a carga desnecessária de recursos que podem não ser utilizados.
+
+O Lazy Loading é comumente aplicado em situações em que o carregamento completo de um objeto ou conjunto de dados pode ser custoso em termos de tempo ou recursos computacionais. Em vez de carregar tudo de uma vez, o Lazy Loading permite carregar apenas uma parte dos dados inicialmente e carregar o restante sob demanda.
+
+Existem diferentes abordagens para implementar o Lazy Loading, dependendo do contexto e dos requisitos do sistema. Alguns exemplos de técnicas de Lazy Loading incluem:
+
+- **Lazy Initialization**: Nessa abordagem, os recursos ou dados são carregados apenas quando são acessados pela primeira vez. Isso significa que o objeto é inicializado sem os dados completos e, quando uma operação ou propriedade que requer esses dados é chamada, eles são carregados sob demanda.
+
+- **Proxy Pattern**: O Proxy Pattern é usado para criar um objeto proxy que atua como um substituto para o objeto real. O proxy carrega os dados somente quando necessário e redireciona as chamadas para o objeto real. Isso permite que o carregamento dos dados seja adiado até o momento em que são necessários.
+
+- **Lazy Loading em Bancos de Dados**: Em bancos de dados, o Lazy Loading é usado para carregar relacionamentos entre tabelas apenas quando eles são acessados. Em vez de carregar todos os dados relacionados de uma vez, o banco de dados carrega apenas as informações necessárias quando uma consulta é feita.
+
+O Lazy Loading é benéfico em situações em que o tempo de carregamento completo de recursos ou dados pode afetar negativamente o desempenho do sistema. Ao adiar o carregamento até o momento necessário, podemos melhorar a eficiência e otimizar o uso de recursos.
+
+No entanto, é importante ter cuidado ao implementar o Lazy Loading, pois pode introduzir complexidade adicional ao código e exigir um gerenciamento cuidadoso dos recursos. Além disso, é essencial considerar possíveis problemas de concorrência e garantir que os dados sejam carregados corretamente quando necessário.
+
+Em resumo, o padrão de projeto Lazy Loading é uma técnica que permite carregar recursos ou dados somente quando necessário, adiando o carregamento completo até o momento em que eles são efetivamente utilizados. Isso ajuda a melhorar o desempenho e a eficiência do sistema, evitando a carga desnecessária de recursos.
