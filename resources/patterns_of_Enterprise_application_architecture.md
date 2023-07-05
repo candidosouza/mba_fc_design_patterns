@@ -343,3 +343,31 @@ O Lazy Loading é benéfico em situações em que o tempo de carregamento comple
 No entanto, é importante ter cuidado ao implementar o Lazy Loading, pois pode introduzir complexidade adicional ao código e exigir um gerenciamento cuidadoso dos recursos. Além disso, é essencial considerar possíveis problemas de concorrência e garantir que os dados sejam carregados corretamente quando necessário.
 
 Em resumo, o padrão de projeto Lazy Loading é uma técnica que permite carregar recursos ou dados somente quando necessário, adiando o carregamento completo até o momento em que eles são efetivamente utilizados. Isso ajuda a melhorar o desempenho e a eficiência do sistema, evitando a carga desnecessária de recursos.
+
+## Repository
+
+O padrão de projeto **Repository** é um padrão de projeto de software que se enquadra na categoria de padrões de arquitetura. Ele tem como objetivo separar a lógica de persistência de dados da lógica de negócios em um sistema. O padrão Repository permite abstrair o acesso a dados e fornece uma interface comum para interagir com a camada de persistência.
+
+Principais conceitos do padrão Repository:
+
+**Repository**: É a classe responsável por fornecer uma interface de alto nível para acessar e manipular os dados de uma determinada entidade ou agregado. O Repository oculta os detalhes de como os dados são armazenados e fornece métodos para buscar, inserir, atualizar e excluir objetos do repositório.
+
+**Entidade**: É o objeto central do domínio que será persistido. No contexto do padrão Repository, uma entidade é um objeto de negócio que possui seus próprios atributos e comportamentos.
+
+**Interface do Repository**: É uma interface que define os métodos básicos de acesso aos dados do repositório, como buscar, inserir, atualizar e excluir. Essa interface permite que diferentes implementações do Repository possam ser usadas de forma transparente.
+
+**Implementação do Repository**: É a classe concreta que implementa a interface do Repository e contém a lógica específica para acessar e manipular os dados. Essa implementação pode utilizar tecnologias e frameworks de persistência, como bancos de dados, ORM (Object-Relational Mapping), APIs de acesso a dados, entre outros.
+
+**Camada de Persistência**: É a camada responsável por armazenar e recuperar os dados do sistema. Essa camada pode ser implementada usando diferentes tecnologias e abordagens, como bancos de dados relacionais, bancos de dados NoSQL, arquivos, serviços web, entre outros.
+
+Benefícios do padrão Repository:
+
+- Separação de responsabilidades: O padrão Repository permite separar a lógica de persistência de dados da lógica de negócios, facilitando a manutenção e evolução do sistema.
+
+- Abstração do acesso a dados: O Repository fornece uma interface comum para acessar os dados, independentemente de como eles são armazenados. Isso permite que diferentes implementações do Repository possam ser usadas, proporcionando flexibilidade e facilitando a troca de tecnologias de persistência.
+
+- Testabilidade: O uso do padrão Repository facilita a criação de testes, pois é possível criar implementações mock ou em memória do Repository para testar a lógica de negócios sem depender do acesso real ao banco de dados.
+
+- Reutilização de código: Ao encapsular a lógica de acesso a dados em um Repository, é possível reutilizar esse código em diferentes partes do sistema, evitando duplicação e promovendo a consistência.
+
+O padrão de projeto Repository é amplamente utilizado em sistemas orientados a objetos para separar a lógica de persistência de dados da lógica de negócios. Ele contribui para a modularidade, flexibilidade e testabilidade do sistema, facilitando a manutenção e evolução a longo prazo.
